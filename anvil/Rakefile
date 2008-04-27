@@ -1,13 +1,13 @@
 require 'rake'
+require 'rake/clean'
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/testtask'
 require 'spec/rake/spectask'
 
-require 'lib/version'
+require 'lib/anvil/version'
 
 NAME = "anvil"
-VERSION = "0.1.0"
 AUTHOR = "Lance Carlson"
 EMAIL = "lancecarlson@gmail.com"
 HOMEPAGE = "http://anvil.rubyforge.org"

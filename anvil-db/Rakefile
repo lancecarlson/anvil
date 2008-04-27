@@ -54,7 +54,7 @@ end
 
 desc 'Run :package and install the resulting .gem'
 task :install => :package do
-  sh %{#{SUDO} gem install pkg/#{NAME}-#{Anvil::VERSION} --no-rdoc --no-ri}
+  sh %{#{SUDO} gem install pkg/#{NAME}-#{VERSION} --no-rdoc --no-ri}
 end
 
 desc 'Run :clean and uninstall the .gem'
@@ -65,13 +65,13 @@ end
 desc "Run all specs"
 Spec::Rake::SpecTask.new('spec') do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = ['--options', 'spec.opts']
+  t.spec_opts = ['--options', 'spec/spec.opts']
 end
 
 desc "Run all specs and generate an rcov report"
 Spec::Rake::SpecTask.new('spec:rcov') do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = ['--options', 'spec.opts']
+  t.spec_opts = ['--options', 'spec/spec.opts']
   t.rcov = true
   t.rcov_dir = 'coverage'
   t.rcov_opts = ['--exclude', 'gems', '--exclude', 'spec']

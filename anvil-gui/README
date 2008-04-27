@@ -1,0 +1,3 @@
+window "Hello World!", :toolkit => :fox do
+  
+end

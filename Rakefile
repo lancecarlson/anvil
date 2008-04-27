@@ -1,7 +1,7 @@
 require 'rake'
 require 'rake/rdoctask'
 
-PROJECTS = %w(anvil anvil-db anvil-gen anvil-gui)
+PROJECTS = %w(anvil-db anvil-gen anvil-gui anvil)
 
 Dir["#{File.dirname(__FILE__)}/*/lib/version.rb"].each do |version_path|
   require version_path
