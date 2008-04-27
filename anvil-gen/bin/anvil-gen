@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "anvil"
+require "anvil-gen"
+
+Anvil::Generator::Console.start(Dir.pwd, ARGV)
