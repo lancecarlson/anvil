@@ -1,0 +1,7 @@
+This is a dependency gem for the Anvil framework. It will install the following packages automatically:
+
+- anvil-db
+- anvil-gen
+- anvil-gui
+
+Beyond that, you will need to decide which GUI adapter you want to install. At the moment only the Fox library is supported. Please stay tuned for more!
