@@ -27,9 +27,9 @@ spec = Gem::Specification.new do |s|
   s.email = EMAIL
   s.homepage = HOMEPAGE
   s.has_rdoc = true
-  s.executables = ["anvil-gen"]
 
   s.add_dependency('anvil-gui')
+  s.add_dependency('fxruby')
   s.add_dependency('rspec')
   s.add_dependency('rake')
 

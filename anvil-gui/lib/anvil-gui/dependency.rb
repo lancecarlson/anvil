@@ -1,29 +1,22 @@
 module Anvil
   module GUI
-    class Dependency      
+    class Dependency
+      attr_reader :name
+      
       def initialize(name)
         @name = name
       end
-      
-      def name
-        @name.to_s.capitalize
-      end
-      
+
       def package
-        "anvil-gui-#{@name}"
+        "anvil-gui-#{@name.to_s.downcase}"
       end
       
       def constant
-        "Anvil::GUI::#{name}"
+        eval "Anvil::GUI::#{@name}"
       end
       
       def exists?
-        begin
-          eval constant
-          true
-        rescue
-          false
-        end
+        Anvil::GUI.const_defined?(@name)
       end
     end
   end
