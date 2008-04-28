@@ -1,19 +1,19 @@
 module Anvil
   module GUI
-    def window(name, options = {})
-      # Setting default GUI Toolkit to FOX for now. Need to change later
-      toolkit_name = options[:toolkit] = :Fox
-      toolkit = initialize_toolkit(toolkit_name)
-      initialize_window(toolkit, name)
-    end
-    
-    private
-    def initialize_toolkit(toolkit)
-      Initializer.new toolkit
-    end
-    
-    def initialize_window(toolkit, name)
-      eval("#{toolkit.dependency.constant}::Window").new toolkit.app, name
+    class Window
+      def initialize(toolkit, name)
+        @toolkit = toolkit
+        @name = name
+        @real_window = create
+      end
+      
+      def create
+        load_gui_constant(@toolkit, "Window").new @toolkit.app, @name
+      end
+      
+      def button(name, options = {})
+        load_gui_constant(@toolkit, "Button").new @real_window, name
+      end
     end
   end
 end

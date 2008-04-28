@@ -10,8 +10,6 @@ module Anvil
         check_existance
         
         @app = initialize_app
-        
-        run_app # Only necessary if the toolkit needs it
       end
       
       def check_existance
@@ -22,7 +20,7 @@ module Anvil
       end
       
       def initialize_app
-        eval("#{@dependency.constant}::App").new
+        load_gui_constant(@toolkit, "App").new
       end
       
       def run_app

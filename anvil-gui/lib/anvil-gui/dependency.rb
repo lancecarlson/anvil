@@ -5,10 +5,15 @@ module Anvil
       
       def initialize(name)
         @name = name
+        require_package
       end
 
       def package
         "anvil-gui-#{@name.to_s.downcase}"
+      end
+      
+      def require_package
+        eval("require '#{package}'")
       end
       
       def constant

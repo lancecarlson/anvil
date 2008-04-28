@@ -8,6 +8,7 @@ module Anvil
         end
         
         def run
+          @real_object.create
           @real_object.run
         end
       end
