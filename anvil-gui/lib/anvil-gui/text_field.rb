@@ -1,14 +1,16 @@
 module Anvil
   module GUI
-    class Window
-      def initialize(toolkit, name)
+    class TextField
+      attr_accessor :text
+      
+      def initialize(toolkit)
         @toolkit = toolkit
         @name = name
         @real_window = create
       end
       
       def create
-        load_gui_constant(@toolkit, "Window").new @toolkit.initializer.app, @name
+        load_gui_constant(@toolkit, "TextField").new @toolkit.initializer.app, @name
       end
       
       def button(name, options = {})

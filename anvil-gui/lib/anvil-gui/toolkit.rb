@@ -1,9 +1,10 @@
 module Anvil
   module GUI
-    class Dependency
-      attr_reader :name
+    class Toolkit
+      attr_reader :name, :initializer
       
-      def initialize(name)
+      def initialize(initializer, name)
+        @initializer = initializer
         @name = name
         require_package
       end
