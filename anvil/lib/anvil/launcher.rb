@@ -4,6 +4,7 @@ module Anvil
     def initialize(config)
       @config = config
       configure_application
+      launch_toolkit
     end
     
     def configure_application
@@ -13,6 +14,10 @@ module Anvil
       Anvil.push_path(:application,  Anvil.root_path("app/controllers/application.rb"))
       Anvil.push_path(:config,       Anvil.root_path("config"))
       Anvil.push_path(:log,          Anvil.log_path)
+    end
+    
+    def launch_toolkit
+      Anvil::GUI::Toolkit.new Anvil.toolkit_name
     end
   end
 end

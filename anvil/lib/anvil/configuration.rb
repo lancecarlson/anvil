@@ -10,7 +10,8 @@ module Anvil
       def defaults
         @defaults ||= {
           :environment    => "development",
-          :anvil_root     => Dir.pwd
+          :anvil_root     => Dir.pwd,
+          :toolkit_name        => "cocoa"
         }
       end
       

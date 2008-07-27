@@ -4,7 +4,8 @@ include Anvil::GUI
 describe "The DSL for" do
   describe Anvil::GUI, "window" do  
     it "should be friggin cool" do
-      window "Test Window" do
+      window :test_window do
+        title "Hello World"
         button "Click me!"
       end
     end

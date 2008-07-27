@@ -1,41 +1,31 @@
 require 'rake'
-require 'rake/clean'
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/testtask'
 require 'spec/rake/spectask'
 
-require 'lib/anvil/version'
-
-NAME = "anvil"
+NAME = "anvil-gui-qt"
+VERSION = "0.0.1"
 AUTHOR = "Lance Carlson"
 EMAIL = "lancecarlson@gmail.com"
 HOMEPAGE = "http://anvil.rubyforge.org"
-SUMMARY = "Database integration for Anvil"
-DESCRIPTION = "A collection of DSL's and frameworks that take full advantage of Ruby's powerful syntax"
-
-windows = (PLATFORM =~ /win32|cygwin/)
-
-SUDO = windows ? "" : "sudo"
+SUMMARY = "Anvil adapter for the Qt library"
 
 dist_dirs = [ "lib", "spec" ]
 
 spec = Gem::Specification.new do |s|
   s.name = NAME
-  s.version = Anvil::VERSION
+  s.version = VERSION
   s.platform = Gem::Platform::RUBY
   s.summary = SUMMARY
-  s.description = DESCRIPTION
+  s.description = s.summary
   s.author = AUTHOR
   s.email = EMAIL
   s.homepage = HOMEPAGE
   s.has_rdoc = true
-  s.executables = ['anvil']
 
-  s.add_dependency('anvil-db')
-  s.add_dependency('anvil-gen')
   s.add_dependency('anvil-gui')
-  s.add_dependency('kissgen')
+  s.add_dependency('Qt')
   s.add_dependency('rspec')
   s.add_dependency('rake')
 
@@ -53,7 +43,7 @@ end
 
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = 'Anvil'
+  rdoc.title    = 'Anvil Qt Adapter'
   rdoc.options << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
   rdoc.options << '--charset' << 'utf-8'
   rdoc.rdoc_files.include('README', 'MIT-LICENSE')
@@ -62,7 +52,7 @@ end
 
 desc 'Run :package and install the resulting .gem'
 task :install => :package do
-  sh %{#{SUDO} gem install pkg/#{NAME}-#{Anvil::VERSION} --no-rdoc --no-ri}
+  sh %{#{SUDO} gem install pkg/#{NAME}-#{VERSION} --no-rdoc --no-ri}
 end
 
 desc 'Run :clean and uninstall the .gem'
@@ -72,13 +62,13 @@ end
 
 desc "Run all specs"
 Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_files = FileList['spec/anvil-gui-fox/**/*_spec.rb']
   t.spec_opts = ['--options', 'spec/spec.opts']
 end
 
 desc "Run all specs and generate an rcov report"
 Spec::Rake::SpecTask.new('spec:rcov') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_files = FileList['spec/anvil-gui-fox/**/*_spec.rb']
   t.spec_opts = ['--options', 'spec/spec.opts']
   t.rcov = true
   t.rcov_dir = 'coverage'
@@ -86,5 +76,5 @@ Spec::Rake::SpecTask.new('spec:rcov') do |t|
 end
 
 task :release => :package do
-  sh %{rubyforge add_release #{NAME} #{NAME} "#{VERSION}" pkg/#{NAME}-#{Anvil::VERSION}.gem}
+  sh %{rubyforge add_release #{NAME} #{NAME} "#{VERSION}" pkg/#{NAME}-#{VERSION}.gem}
 end

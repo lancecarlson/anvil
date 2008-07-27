@@ -8,12 +8,13 @@ end
 
 module Anvil
   class << self
-    attr_accessor :environment, :root, :load_paths
+    attr_accessor :environment, :root, :load_paths, :toolkit_name
     
     def launch!(argv=ARGV)
       @config = Configuration.new
       Anvil.environment = @config[:environment]
       Anvil.root = @config[:root]
+      Anvil.toolkit_name = @config[:toolkit_name]
       Launcher.new(@config)
     end
     
