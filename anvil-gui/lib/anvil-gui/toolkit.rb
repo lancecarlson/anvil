@@ -14,11 +14,11 @@ module Anvil
       end
       
       def require_package
-        eval("require '#{package}'")
+        require package
       end
       
       def constant
-        eval "Anvil::GUI::#{@name}"
+        "Anvil::GUI::#{@name}"
       end
       
       def exists?

@@ -1,6 +1,6 @@
 module Anvil
   module GUI
-    class Initializer
+    class Launcher
       attr_reader :app, :toolkit
       
       def initialize(toolkit)
