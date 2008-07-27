@@ -1,8 +1,8 @@
 module Anvil
   module GUI
     class Window
-      def initialize(toolkit, name)
-        @toolkit = toolkit
+      def initialize(name)
+        @toolkit = Toolkit
         @name = name
         @real_window = create
       end

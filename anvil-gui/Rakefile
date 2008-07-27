@@ -54,7 +54,7 @@ end
 
 desc 'Run :package and install the resulting .gem'
 task :install => :package do
-  sh %{#{SUDO} gem install pkg/#{NAME}-#{VERSION} --no-rdoc --no-ri}
+  sh %{#{SUDO} gem install pkg/#{NAME}-#{Anvil::GUI::VERSION} --no-rdoc --no-ri}
 end
 
 desc 'Run :clean and uninstall the .gem'
@@ -78,5 +78,5 @@ Spec::Rake::SpecTask.new('spec:rcov') do |t|
 end
 
 task :release => :package do
-  sh %{rubyforge add_release #{NAME} #{NAME} "#{VERSION}" pkg/#{NAME}-#{VERSION}.gem}
+  sh %{rubyforge add_release #{NAME} #{NAME} "#{Anvil::GUI::VERSION}" pkg/#{NAME}-#{Anvil::GUI::VERSION}.gem}
 end
