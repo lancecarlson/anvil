@@ -2,7 +2,7 @@ require "rubygems"
 require "anvil-gui"
 require "anvil-db"
 
-%w(configuration console version).each do |file|
+%w(configuration console controller core_ext launcher version).each do |file|
   require File.join(File.dirname(__FILE__), "anvil", file)
 end
 
@@ -24,6 +24,14 @@ module Anvil
   
     def root_path(path)
       File.join(root, path)                         
+    end
+    
+    def log_path
+      if @config[:log_file]
+        File.dirname(@config[:log_file])
+      else
+        Merb.root_path("log")
+      end
     end
   end
 end
