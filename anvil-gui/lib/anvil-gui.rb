@@ -1,20 +1,14 @@
-%w(initializer toolkit view window).each do |file|
+%w(toolkit version window).each do |file|
   require File.join(File.dirname(__FILE__), "anvil-gui", file)
 end
 
 module Anvil
   module GUI
-    def window(name, options = {}, &block)
-      # Setting default GUI Toolkit to FOX for now. Need to change later
-      toolkit_name = options[:toolkit] = :Fox
-      window = Window.new launcher.toolkit, name
-      window.instance_eval(&block) if block
-      launch.run_app
+    class << self
+      def window(name, options = {}, &block)
+        window = Window.new Toolkit, name
+        window.instance_eval(&block) if block
+      end
     end
-    
-    def load_gui_constant(toolkit, constant)
-      eval("#{toolkit.constant}::#{constant}")
-    end
-    
   end
 end

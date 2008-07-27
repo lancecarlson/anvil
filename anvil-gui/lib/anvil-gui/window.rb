@@ -8,18 +8,17 @@ module Anvil
       end
       
       def create
-        load_gui_constant(@toolkit, "Window").new @toolkit.initializer.app, @name
+        @toolkit.window @name
       end
       
-      def title(title="Untitled")
-        
+      def title(title)
       end
       
       def size(width, height)
       end
       
       def button(name, options = {})
-        load_gui_constant(@toolkit, "Button").new @real_window, name
+        @toolkit.button name
       end
     end
   end

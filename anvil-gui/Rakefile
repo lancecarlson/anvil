@@ -3,9 +3,9 @@ require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/testtask'
 require 'spec/rake/spectask'
+require 'lib/anvil-gui/version'
 
 NAME = "anvil-gui"
-VERSION = "0.0.1"
 AUTHOR = "Lance Carlson"
 EMAIL = "lancecarlson@gmail.com"
 HOMEPAGE = "http://anvil.rubyforge.org"
@@ -19,7 +19,7 @@ dist_dirs = [ "lib", "spec" ]
 
 spec = Gem::Specification.new do |s|
   s.name = NAME
-  s.version = VERSION
+  s.version = Anvil::GUI::VERSION
   s.platform = Gem::Platform::RUBY
   s.summary = SUMMARY
   s.description = s.summary

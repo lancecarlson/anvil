@@ -11,7 +11,7 @@ module Anvil
         @defaults ||= {
           :environment    => "development",
           :anvil_root     => Dir.pwd,
-          :toolkit_name        => "cocoa"
+          :toolkit_name        => "Cocoa" # Fox or Cocoa or Qt
         }
       end
       
