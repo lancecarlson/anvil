@@ -1,2 +1,4 @@
+anvil/pkg/
+anvil-db/pkg/
 anvil-gui/pkg/
 anvil-gui-fox/pkg/
