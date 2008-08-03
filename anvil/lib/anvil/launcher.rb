@@ -1,10 +1,11 @@
 module Anvil
   # To be cool, we use the launcher class. BootLoader and Initializer were taken (Merb/Rails)
-  class Launcher
+  class Launcher      
     def initialize(config)
       @config = config
       configure_application
       launch_toolkit
+      load_files
     end
     
     def configure_application
@@ -17,7 +18,18 @@ module Anvil
     end
     
     def launch_toolkit
-      Anvil::GUI::Toolkit.new Anvil.toolkit_name
+      Anvil::GUI::Toolkit.register! Anvil.toolkit_name
     end
+    
+    def load_files
+      # Require all the files in the registered load paths
+      Anvil.load_paths.each do |name, path|
+        next unless path.last
+        Dir[path.first / path.last].each do |file|
+          load file
+        end
+      end
+    end
+
   end
 end

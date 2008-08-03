@@ -13,5 +13,9 @@ module Anvil
     def _run(action)
       self.action_name = action
     end
+    
+    def render(action)
+      
+    end
   end
 end

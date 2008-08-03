@@ -2,4 +2,6 @@ anvil/pkg/
 anvil-db/pkg/
 anvil-gen/pkg/
 anvil-gui/pkg/
+anvil-gui-cocoa/pkg/
 anvil-gui-fox/pkg/
+anvil-gui-qt/pkg/

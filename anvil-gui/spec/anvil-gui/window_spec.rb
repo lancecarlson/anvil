@@ -9,7 +9,8 @@ describe "The DSL for" do
   describe Anvil::GUI, "window" do      
     it "should be friggin cool" do
       Anvil::GUI.window :test_window do
-        title "Hello World"
+        title = "Hello World"
+        size = 300, 400
       end
     end
   end
