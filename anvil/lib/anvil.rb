@@ -2,7 +2,7 @@ require "rubygems"
 require "anvil-gui"
 require "anvil-db"
 
-%w(configuration console controller core_ext launcher version).each do |file|
+%w(configuration console controller core_ext events launcher version).each do |file|
   require File.join(File.dirname(__FILE__), "anvil", file)
 end
 

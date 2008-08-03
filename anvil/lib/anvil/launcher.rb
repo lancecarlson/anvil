@@ -6,6 +6,7 @@ module Anvil
       configure_application
       launch_toolkit
       load_files
+      load_initial_controller
     end
     
     def configure_application
@@ -29,6 +30,11 @@ module Anvil
           load file
         end
       end
+    end
+    
+    def load_initial_controller
+      params = Anvil::Events[:init]
+      Events.fire_action! params[:controller], params[:action]
     end
 
   end
