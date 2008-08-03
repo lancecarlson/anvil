@@ -10,7 +10,7 @@ module Anvil
     end
     
     def configure_application
-      %w[view model controller].each do |component|
+      %w[model controller].each do |component|
         Anvil.push_path(component.to_sym, Anvil.root_path("app/#{component}s"))
       end
       Anvil.push_path(:application,  Anvil.root_path("app/controllers/application.rb"))

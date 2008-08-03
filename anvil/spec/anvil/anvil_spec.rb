@@ -13,11 +13,10 @@ describe Anvil do
   end
   
   it "should launch the project" do
-    Anvil::Events.should_receive(:[]).with(:init).and_return({:controller => :initialization_controller, :action => :show})
+    Anvil::Events.should_receive(:[]).with(:init).and_return({:controller => :initialization, :action => :show})
     Anvil::GUI::Toolkit.should_receive(:register!).and_return(@toolkit)
     Anvil.launch!
     Anvil.load_paths.should == { 
-      :view=>["#{@app_path}/app/views", "**/*.rb"], 
       :application=>["#{@app_path}/app/controllers/application.rb", "**/*.rb"], 
       :log=>["#{@app_path}/log", "**/*.rb"], 
       :model=>["#{@app_path}/app/models", "**/*.rb"], 

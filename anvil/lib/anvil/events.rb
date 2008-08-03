@@ -21,8 +21,8 @@ module Anvil
       end
       
       def fire_action!(controller_name, action_name)
-        controller_klass = Controller.children[controller_name]
-        raise StandardError, "Controller: #{controller_klass} does not exist" unless controller_klass
+        controller_klass = Controller.children["#{controller_name}_controller".to_sym]
+        raise StandardError, "Controller: #{controller_name.to_s.camelize} does not exist" unless controller_klass
         controller = controller_klass.new
         raise StandardError, "Action :#{action_name} does not exist" unless controller.respond_to?(action_name)
         controller._run(action_name)

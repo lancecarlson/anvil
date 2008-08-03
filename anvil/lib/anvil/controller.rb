@@ -9,7 +9,11 @@ module Anvil
       end
     
       def controller_name
-        @controller_name ||= self.name.to_const_path 
+        @controller_name ||= self.name.to_const_path
+      end
+      
+      def resource_name
+        controller_name.gsub("_controller", "")
       end
     end
        
@@ -19,6 +23,10 @@ module Anvil
       self.class.controller_name
     end
     
+    def resource_name
+      self.class.resource_name
+    end
+    
     def _run(action)
       self.action_name = action
       self.send(action)
@@ -26,7 +34,12 @@ module Anvil
     end
     
     def render(action)
-      
+      load _view_location(action)
+    end
+    
+    private
+    def _view_location(action)
+      Anvil.view_path(resource_name, action) + ".rb"
     end
   end
 end

@@ -40,5 +40,9 @@ module Anvil
         Anvil.root_path("log")
       end
     end
+    
+    def view_path(resource, action)
+      Anvil.root_path("app/views/#{resource}/#{action}")
+    end
   end
 end
