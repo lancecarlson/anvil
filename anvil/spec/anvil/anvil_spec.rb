@@ -9,7 +9,7 @@ describe Anvil do
   before do
     @events = mock(Anvil::Events)
     @toolkit = mock(Anvil::GUI::Toolkit)
-    @app_path = File.expand_path(File.join(File.dirname(__FILE__), "..", ".."))
+    @app_path = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "demos", "hello_world"))
   end
   
   it "should launch the project" do

@@ -34,7 +34,7 @@ module Anvil
     end
     
     def render(action)
-      load _view_location(action)
+      Anvil::GUI.dsl open(_view_location(action)).readlines.join
     end
     
     private

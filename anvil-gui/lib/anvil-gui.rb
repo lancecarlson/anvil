@@ -9,6 +9,10 @@ module Anvil
         window = Window.new name
         window.instance_eval(&block) if block
       end
+      
+      def dsl(code_string)
+        self.instance_eval(code_string) if code_string
+      end
     end
   end
 end

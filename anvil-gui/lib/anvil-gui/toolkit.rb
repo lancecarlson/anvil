@@ -39,7 +39,7 @@ module Anvil
         end
         
         def build_application
-          @app = self.send(:app)
+          @app = self.app
         end
       
         def method_missing(method, *args)
