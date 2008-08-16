@@ -10,6 +10,7 @@ module Anvil
       end
       
       def create
+        puts @real_window.inspect
         @toolkit.window @name
       end
       

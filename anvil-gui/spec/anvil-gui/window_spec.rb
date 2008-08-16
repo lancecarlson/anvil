@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), "..", "spec_helper")
 describe "The DSL for" do
   before do
     Anvil::GUI::Toolkit.register!("Fox")
-    Anvil::GUI::Fox::Window.should_receive(:new).with([:test_window])
+    Anvil::GUI::Fox::Window.should_receive(:new).with(:test_window)
   end
   
   describe Anvil::GUI, "window" do      

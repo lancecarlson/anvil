@@ -2,13 +2,13 @@ module Anvil
   module GUI
     class Toolkit
       class << self
-        attr_reader :name, :status, :app
+        attr_reader :name, :status
       
         def register!(name)
           @name = name.to_s
           @status = :pending
           require_package
-          check_existance
+          check_existence
           build_application
         end
         
@@ -32,18 +32,21 @@ module Anvil
           Anvil::GUI.const_defined?(@name)
         end
       
-        def check_existance
+        def check_existence
           unless exists?
             raise "#{name} is missing, please install the #{package} gem." 
           end
         end
         
         def build_application
+          puts "Starting #{name} Toolkit"
           @app = self.app
         end
       
         def method_missing(method, *args)
-          eval("#{class_name}::#{method.to_s.capitalize}").new args
+          gui_klass = "#{class_name}::#{method.to_s.capitalize}"
+          puts "#{gui_klass}"
+          eval(gui_klass).new *args
         end
       end
     end
