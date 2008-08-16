@@ -7,6 +7,8 @@ module Anvil
         
         def initialize(name)
           @real_object = ::Qt::Label.new("Test", nil)
+          @real_object.resize(150, 30)
+          @real_object.show
         end
         
         def title=(title)

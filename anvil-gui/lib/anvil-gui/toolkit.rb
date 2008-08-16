@@ -42,10 +42,14 @@ module Anvil
           puts "Starting #{name} Toolkit"
           @app = self.app
         end
+        
+        def run
+          @app.run
+        end
       
         def method_missing(method, *args)
           gui_klass = "#{class_name}::#{method.to_s.capitalize}"
-          puts "#{gui_klass}"
+          puts "#{gui_klass} Accessed"
           eval(gui_klass).new *args
         end
       end
