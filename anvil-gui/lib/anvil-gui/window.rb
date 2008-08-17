@@ -6,6 +6,7 @@ module Anvil
       def initialize(name)
         @toolkit = Toolkit
         @name = name
+        @properties = {}
         @toolkit_object = create
         puts "#{@toolkit_object.inspect} Created"
       end
@@ -15,20 +16,22 @@ module Anvil
       end
       
       def title=(title)
-        @properties[:title] = title
+        # @properties[:title] = title
         @toolkit_object.title=(title)
       end
       
-      def size=(width, height)
-        puts "size"
-        @properties[:size] = { :width => width, :height => height }
-        @toolkit_object.size = width, height
+      def size=(width=640, height=480)
+        if width.is_a?(Array)
+          height = width[1]
+          width = width[0]
+        end
+        
+        # @properties[:size] = { :width => width, :height => height }
+        @toolkit_object.resize(width, height)
       end
       
       def method_missing(method, *args)
-        puts "test"
-        puts "#{method}"
-        @properties[method] = *args
+        # @properties[method] = *args
         @toolkit_object.send(method, *args)
       end
       

@@ -6,9 +6,7 @@ module Anvil
         attr_accessor :title
         
         def initialize(name)
-          @real_object = ::Qt::Label.new("Test", nil)
-          @real_object.resize(150, 30)
-          @real_object.show
+          @real_object = ::Qt::Label.new("Hello World!", nil)
         end
         
         def title=(title)
@@ -20,6 +18,10 @@ module Anvil
         
         def text=(text)
           @real_object.setText(text)
+        end
+        
+        def show
+          @real_object.show
         end
         
         def method_missing(method, *args)

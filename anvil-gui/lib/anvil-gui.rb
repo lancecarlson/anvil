@@ -7,12 +7,13 @@ module Anvil
     class << self
       def window(name, options = {}, &block)
         window = Window.new name
-        window.instance_eval { block } if block
+        yield window if block_given?
       end
       
       def dsl(code_string)
         self.instance_eval(code_string) if code_string
       end
+      
     end
   end
 end
